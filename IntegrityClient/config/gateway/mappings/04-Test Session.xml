@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<mapping name="04-Test Protocol" template-version="3.0">
+   <!--
+      Mapping configuration for ALM 2009 Test Session.
+
+      The  prefix on the internal field names will need to be
+      changed to match the prefix used on the ALM 2009 solution
+      installation.
+
+      Reviewed and enhanced by Volker Eckardt in 2014
+      email: veckardt@ptc.com
+
+      -->
+   <description>Export ALM Session from Integrity to Microsoft Word.</description>
+   <!-- As this is an export only mapping, all fields will be configured as 'out' -->
+   <!-- Prefix may apply to the "internal" and "attachment" attribute values, i.e. field names. -->
+
+   <!-- Field mappings common to all maps -->
+   <field internal="Project" external="Project" direction="out" />
+   <field internal="State" external="State" direction="out" />
+   <field internal="ID" external="ID" direction="out" />
+
+   <!-- link-field internal="ID" external="ID" field-type="id" direction="out" -->
+   <!-- field internal="Section" external="Section" direction="out" -->
+   <field internal="Type" external="Type" direction="out" />
+   <field internal="Assigned User" external="Assigned User" direction="out" />
+      <field internal="Category" external="Category" direction="out" />   
+
+   <!-- Map based on type -->
+   <map-conditional internal="Type" />
+
+   <!-- Test Objective (Document) specific mappings -->
+   <map name="Test Objective">
+      <field internal="Description" external="Description" data-type="xhtml" field-type="richcontent" attachment="Text Attachments" direction="out" />
+      <field internal="Priority" external="Priority" direction="out" />
+      <field internal="Summary" external="Summary" direction="out" />
+   </map>
+
+   <!-- Test Session specific mappings -->
+   <map name="Test Session">
+      <field internal="Summary" external="Summary" direction="out" />
+      <field internal="Description" external="Description" data-type="xhtml" field-type="richcontent" attachment="Text Attachments" direction="out" />
+      <field internal="Priority" external="Priority" direction="out" />
+      <field internal="Session Type" external="Session Type" direction="out" />
+      <field internal="Planned Count" external="Planned Count" direction="out" />
+      <field internal="Run Count" external="Run Count" direction="out" />
+      <field internal="Pass Count" external="Pass Count" direction="out" />
+      <field internal="Fail Count" external="Fail Count" direction="out" />
+      <field internal="Other Count" external="Other Count" direction="out" />
+      <field internal="Run Percentage" external="Run Percentage" direction="out" />
+      <field internal="Priority" external="Priority" direction="out" />
+      <field internal="Planned Start Date" external="Planned Start Date" direction="out" />
+      <field internal="Planned End Date" external="Planned End Date" direction="out" />
+      <field internal="Tests As Of Date" external="Tests As Of Date" direction="out" />
+      <field internal="Build ID" external="Build ID" direction="out" />
+      <field internal="Test Environment" external="Test Environment" data-type="xhtml" field-type="richcontent" attachment="Text Attachments" direction="out" />
+      <field internal="Test Objective" external="Test Objective" direction="out" />
+   </map>
+
+   <!-- Test Case specific mappings -->
+   <map name="Test Case">
+      <field internal="Text" external="Text" data-type="xhtml" field-type="richcontent" attachment="Text Attachments" direction="out" />
+      <field internal="Expected Results" external="Expected Results" direction="out" />
+      <field internal="Validates" external="Validates" direction="out" />
+      <field internal="Is Meaningful" external="Is Meaningful" direction="out" />
+   </map>
+
+   <!-- Test Case specific mappings -->
+   <map name="Test">
+	  <field internal="ID" external="ID" direction="out" />
+      <field internal="Text" external="Text" data-type="xhtml" field-type="richcontent" attachment="Text Attachments" direction="out" />
+      <field internal="Expected Results" external="Expected Results" direction="out" />
+      <field internal="Validates" external="Validates" direction="out" />
+      <field internal="Is Meaningful" external="Is Meaningful" direction="out" />
+   </map>   
+   
+   <!-- Test Step specific mappings -->
+   <map name="Test Step">
+      <field internal="Summary" external="Summary" direction="out" />
+      <field internal="Description" external="Description" data-type="xhtml" field-type="richcontent" attachment="Text Attachments" direction="out" />
+   </map>
+
+   <!-- Defect specific mappings -->
+   <map name="Defect">
+      <field internal="Summary" external="Summary" direction="out" />
+      <field internal="Priority" external="Priority" direction="out" />
+      <field internal="Task Phase" external="Task Phase" direction="out" />
+   </map>
+</mapping>

@@ -1,0 +1,13 @@
+      <export-config>
+         <name>Test Protocol</name>
+         <description>An exporter that writes a document to Microsoft Word docx format</description>
+         <exporter class="com.ptc.services.gateway.exporter.word.WordExport">
+            <property name="template">../config/gateway/export/Microsoft Word/2014-PTC-Test-Session.docx</property>
+            <property name="type">Test Session Protocol</property>
+         </exporter>
+         <extension>docx</extension>
+         <display-fields>
+            <display-field>Document Title</display-field>
+         </display-fields>
+         <gateway-configuration-name>04-Test Protocol</gateway-configuration-name>
+      </export-config>

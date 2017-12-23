@@ -1,0 +1,7 @@
+#   LAX.CLASS.PATH
+#   --------------
+#   the Java classpath necessary to run this application
+#   Can be separated by colons (Mac OS/Unix) or semicolons (Windows)
+
+lax.class.path=     ;..\\lib\\IntegrityCustomExport.jar;..\\lib\\IntegrityAPI.jar
+
