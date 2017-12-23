@@ -1,57 +1,54 @@
-# IntegrityCustomGateway
-An alternative starting form for Gateway export client processes, supporting Labels to pick, direct PDF export, pre-defined file name
-
+# IntegrityCustomExport
+The CustomExport is a customized solution to enhance the Integrity Gateway.
 
 ## Purpose
-The CustomGateway is a custom form to execute the Integrity gateway. It offers some very helpful features that were frequently requested by our PTC user community.
+This is the base enhancement for the Integrity Gateway. It adds additional functionality to the Gateway to retrieve, for example, related items from Integity to add these to the output stream for your MS Word report.
 
-![CustomGateway](doc/CustomGateway.PNG)
+![CustomExport](doc/CustomExport.PNG)
 
 ## Use Cases
-- Replaces the Local Gateway form
-- Direct PDF export
-- Easier to handle exports
-- Pre-defined File names
-- Can run on items also (not only documents)
+- Create a Test Session Report with Defect and Test Objective details. 
 
 ## Install
-Option 1: In IntegrityClient folder
-- Put the "dist/IntegrityCustomGateway.jar" directly into your IntegrityClient folder
-- Copy also the files "dist/lib/IntegrityAPI.jar" and "dist/lib/jfxmessagebox-1.1.0.jar" into your IntegrityClient/lib folder
+In IntegrityClient folder
+- Put the "IntegrityClient/IntegrityCustomGateway.jar" directly into your own IntegrityClient folder
+- Copy also the files "IntegrityClient/lib/IntegrityAPI.jar" and "IntegrityClient/lib/jfxmessagebox-1.1.0.jar" into your IntegrityClient/lib folder
 - Add a custom menu entry with:
 ```
-name: Custopm Gateway
+name: Custom Export
 program:  ../jre/bin/javaw.exe
 parameter: -jar ../IntegrityCustomGateway.jar
 ```
-
-Option 2: In a shared folder
-- Take all files from "dist" folder and place them somewhere centrally
-- Register a custom menu as described before, but with the following change
+- Add the following type proprty to your Test Session type
 ```
-parameter: -jar <your shared folder>/IntegrityCustomGateway.jar
+name: Gateway.Configurations
+value:  Test Protocol,Test Protocol
+description: (Custom) The names of the export configurations for the selected type
 ```
-
-## Configuration
-I have implemented two different options to limit the list of possible export configurations
-a) with a property on type level
-Define a custom property on type level
-Name:  Gateway.Configurations
-Value: <Export Configuration1>,<Export Configuration2>,<Export Configuration3>  (Hint: you need to have at least 2 configs listed here)
-
-b) with an additional XML file on server
-t.b.d.
-
+- Merge "IntegrityClient\bin\add-to-Gateway.lax.txt" into your own "bin\Gateway.lax"
+- Merge "IntegrityClient\config\gateway\add-to-gateway-tool-config.txt" into your own "config\gateway\gateway-tool-configuration.xml"
+- Copy all remaining content from "IntegrityClient\config" into your own "config"
+- Create a field "Is Meaningful" (type=logical, calculation="IsMeaningful()") and add it to your "Test" type 
 
 ## How to test
-- open any document or just stay on one in the query result
-- click Custom > Custom Gateway
+- Select a Test Session
+- click Custom > Custom Export
 - The custom form should open
 - Start the Gateway with a click at the [Generate] button
 - Then review the outcome
 
+## Hints
+- Update the Layout to fulfill your individual needs.
+- If more attributes should be extracted, adapt/update the mapping file
+- Keep in mind that the Mapping File Structure is a specific configuration for this Mulit-Type extract!
+
+## Move to Server
+- You can move all the local files (except lax and libs) onto your Integrity Server.
+- Distribute the jar files and the lax file to other Integrity client installations.
+- Configure a ViewSet with the Custom Menu entry and share it.
+
 ##  Development environment
-- PTC Integrity LM 10.9 (also 11.0 should be fine)
+- PTC Integrity LM 10.9 (also 11.0 is fine)
 - Netbeans 7.4 (or 8)
 - Java 1.7 (or 1.8)
 
