@@ -7,7 +7,7 @@ This is the base enhancement for the Integrity Gateway. It adds additional funct
 ![CustomExport](doc/CustomExport.PNG)
 
 ## Use Cases
-- Create a Test Session Report with Defect and Test Objective details. 
+- Create a Test Session Report with Defect and Test Objective details, in MS Word or PDF format. 
 
 ## Install
 In IntegrityClient folder
